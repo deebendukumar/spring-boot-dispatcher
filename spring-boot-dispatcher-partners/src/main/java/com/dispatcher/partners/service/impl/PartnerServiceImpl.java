@@ -20,12 +20,12 @@ import com.dispatcher.odoo.ObjectAdapter;
 import com.dispatcher.odoo.Row;
 import com.dispatcher.odoo.Session;
 import com.dispatcher.odoo.exception.OdooApiException;
-import com.dispatcher.service.model.Partner;
+import com.dispatcher.common.model.Partner;
 import com.dispatcher.partners.repository.PartnerRepository;
 import com.dispatcher.partners.service.PartnerService;
 import com.dispatcher.service.config.MessageCodes;
 import com.dispatcher.service.exception.DataNotFoundException;
-import com.dispatcher.odoo.facade.PartnerFacade;
+import com.dispatcher.odoo.facade.PartnerApiClient;
 import org.ameba.annotation.Measured;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
@@ -49,7 +49,7 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     private final Translator translator;
     private final Environment environment;
     private final Session session;
-    private final PartnerFacade facade;
+    private final PartnerApiClient facade;
 
     PartnerServiceImpl(Environment environment, PartnerRepository repository, Translator translator, Session session) {
         this.environment = environment;
@@ -59,10 +59,10 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
         this.facade = createPartnerFacade(session);
     }
 
-    public static  PartnerFacade createPartnerFacade(Session session) {
-        PartnerFacade facade = null;
+    public static PartnerApiClient createPartnerFacade(Session session) {
+        PartnerApiClient facade = null;
         try {
-            facade = new PartnerFacade(session);
+            facade = new PartnerApiClient(session);
         } catch (XmlRpcException e) {
             logger.error("error creating partner facade {}", e.getMessage());
         } catch (OdooApiException e) {

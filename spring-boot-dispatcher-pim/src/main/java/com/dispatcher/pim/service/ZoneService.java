@@ -16,7 +16,6 @@
 
 package com.dispatcher.pim.service;
 
-import com.dispatcher.pim.entity.Warehouse;
 import com.dispatcher.pim.entity.Zone;
 
 import java.util.List;

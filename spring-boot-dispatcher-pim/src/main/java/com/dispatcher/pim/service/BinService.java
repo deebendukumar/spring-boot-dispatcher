@@ -17,7 +17,6 @@
 package com.dispatcher.pim.service;
 
 import com.dispatcher.pim.entity.Bin;
-import com.dispatcher.pim.entity.Warehouse;
 
 import java.util.List;
 

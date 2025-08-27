@@ -16,7 +16,7 @@
 
 package com.dispatcher.partners.service;
 
-import com.dispatcher.service.model.Partner;
+import com.dispatcher.common.model.Partner;
 
 import java.util.List;
 

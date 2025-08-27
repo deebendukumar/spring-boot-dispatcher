@@ -16,65 +16,45 @@
 
 package com.dispatcher.pim.service.impl;
 
-import com.dispatcher.pim.entity.Product;
-import com.dispatcher.pim.repository.ProductRepository;
-import com.dispatcher.pim.service.ProductService;
+import com.dispatcher.odoo.Session;
+import com.dispatcher.odoo.exception.OdooApiException;
+import com.dispatcher.odoo.facade.OdooAbstractApiService;
+import com.dispatcher.odoo.facade.WarehouseApiClient;
+import com.dispatcher.odoo.facade.ProductApiClient;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
-
-import java.util.List;
-import java.util.NoSuchElementException;
+import org.apache.xmlrpc.XmlRpcException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 
 /**
  * A TxService is a stereotype annotation to define a transactional Spring managed service.
  * A Measured is a marker annotation on classes or public methods to indicate that the annotated class or method are being tracked in terms
  */
 @TxService
-public class ProductServiceImpl implements ProductService<Product> {
+public class ProductServiceImpl extends OdooAbstractApiService {
 
-    private final ProductRepository repository;
+    private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
+
     private final Translator translator;
+    private final Environment environment;
 
-    ProductServiceImpl(ProductRepository repository, Translator translator) {
-        this.repository = repository;
+    ProductServiceImpl(Environment environment, Translator translator, Session session) {
+        this.environment = environment;
         this.translator = translator;
+        facade = createProductApiClient(session);
     }
 
-    @Override
-    public Product findByPKey(String id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException(translator.translate("product.not.found", id)));
-    }
-
-    @Override
-    public List<Product> findAll() {
-        return repository.findAll();
-    }
-
-    @Override
-    public Product create(Product product) {
-
-        return repository.save(product);
-
-    }
-
-    @Override
-    public Product update(String id, Product product) {
-        return repository .findById(id)
-                .map(existingProduct -> {
-                    product.setId(id);
-                    return repository.save(product);
-                })
-                .orElseThrow(() -> new NoSuchElementException("Product with id " + id + " not found"));
-    }
-
-    @Override
-    public Product delete(String id) {
-        return repository.findById(id)
-                .map(product -> {
-                    repository.delete(product);
-                    return product;
-                })
-                .orElseThrow(() -> new NoSuchElementException("Product with id " + id + " not found"));
+    public static ProductApiClient createProductApiClient(Session session) {
+        ProductApiClient facade = null;
+        try {
+            facade = new ProductApiClient(session);
+        } catch (XmlRpcException e) {
+            logger.error("error creating warehouse facade {}", e.getMessage());
+        } catch (OdooApiException e) {
+            logger.error("error creating warehouse facade {}", e.getMessage());
+        }
+        return facade;
     }
 }

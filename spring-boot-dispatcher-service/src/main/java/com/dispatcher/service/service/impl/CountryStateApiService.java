@@ -18,8 +18,8 @@ package com.dispatcher.service.service.impl;
 
 import com.dispatcher.odoo.Session;
 import com.dispatcher.odoo.exception.OdooApiException;
-import com.dispatcher.odoo.facade.CountryApiClient;
 import com.dispatcher.odoo.facade.CountryStateApiClient;
+import com.dispatcher.odoo.facade.OdooAbstractApiService;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
 import org.apache.xmlrpc.XmlRpcException;
@@ -32,7 +32,7 @@ import org.springframework.core.env.Environment;
  * A Measured is a marker annotation on classes or public methods to indicate that the annotated class or method are being tracked in terms
  */
 @TxService
-public class CountryStateApiService extends OdooApiService  {
+public class CountryStateApiService extends OdooAbstractApiService {
 
     private static final Logger logger = LoggerFactory.getLogger(CountryStateApiService.class);
 
@@ -42,10 +42,10 @@ public class CountryStateApiService extends OdooApiService  {
     CountryStateApiService(Environment environment, Translator translator, Session session) {
         this.environment = environment;
         this.translator = translator;
-        facade = createCountryStateFacade(session);
+        facade = createCountryStateApiClient(session);
     }
 
-    public static CountryStateApiClient createCountryStateFacade(Session session) {
+    public static CountryStateApiClient createCountryStateApiClient(Session session) {
         CountryStateApiClient facade = null;
         try {
             facade = new CountryStateApiClient(session);

@@ -49,7 +49,7 @@ public class Session {
     private static boolean connecting = false;
     private RPCProtocol protocol;
 
-    private OdooXmlRpcProxy objectClient;
+    private OdooRpcClient objectClient;
     private Version serverVersion;
 
     private URL jsonurl;
@@ -99,7 +99,7 @@ public class Session {
         this.databaseName = databaseName;
         this.userName = userName;
         this.password = password;
-        this.objectClient = new OdooXmlRpcProxy(protocol, host, port, RPCServices.RPC_OBJECT);
+        this.objectClient = new OdooRpcClient(protocol, host, port, RPCServices.RPC_OBJECT);
         try {
             setJsonClient();
         } catch (MalformedURLException e) {
@@ -201,7 +201,7 @@ public class Session {
     int authenticate() throws XmlRpcException, Exception {
 
         // XMLRPC part
-        OdooXmlRpcProxy commonClient = new OdooXmlRpcProxy(protocol, host, port, RPCServices.RPC_COMMON);
+        OdooRpcClient commonClient = new OdooRpcClient(protocol, host, port, RPCServices.RPC_COMMON);
         Object id = commonClient.execute("login", new Object[]{databaseName, userName, password});
 
         // JSONRPC part
@@ -334,7 +334,7 @@ public class Session {
      */
     public static ArrayList<String> getDatabaseList(RPCProtocol protocol, String host, int port)
             throws XmlRpcException {
-        OdooXmlRpcProxy client = new OdooXmlRpcProxy(protocol, host, port, RPCServices.RPC_DATABASE);
+        OdooRpcClient client = new OdooRpcClient(protocol, host, port, RPCServices.RPC_DATABASE);
 
         // Retrieve databases
         Object[] result = (Object[]) client.execute("list", new Object[]{});
@@ -464,7 +464,7 @@ public class Session {
     public Version getServerVersion() throws XmlRpcException {
         if (serverVersion == null) {
             // Cache server version
-            serverVersion = OdooXmlRpcProxy.getServerVersion(protocol, host, port);
+            serverVersion = OdooRpcClient.getServerVersion(protocol, host, port);
         }
         return serverVersion;
     }
@@ -474,14 +474,14 @@ public class Session {
 
         Object[] reportParams = new Object[]{databaseName, userID, password, reportName, ids};
         if (getServerVersion().getMajor() < 11) {
-            OdooXmlRpcProxy client = new OdooXmlRpcProxy(protocol, host, port, RPCServices.RPC_REPORT);
+            OdooRpcClient client = new OdooRpcClient(protocol, host, port, RPCServices.RPC_REPORT);
             Map<String, Object> result = (Map<String, Object>) client.execute(reportMethod, reportParams);
             finalResults = DatatypeConverter.parseBase64Binary((String) result.get("result"));
 
         } else {
             // Implement changes thanks to
             // https://github.com/OCA/odoorpc/issues/20
-            OdooXmlRpcProxy client = new OdooXmlRpcProxy(protocol, host, port, RPCServices.RPC_OBJECT);
+            OdooRpcClient client = new OdooRpcClient(protocol, host, port, RPCServices.RPC_OBJECT);
             ByteBuffer result = (ByteBuffer) this.executeCommandWithContext("ir.actions.report", reportMethod,
                     reportParams);
             finalResults = result.array();

@@ -89,7 +89,7 @@
         <module>spring-boot-dispatcher-picking</module>
         <module>spring-boot-dispatcher-pim</module>
         <module>spring-boot-dispatcher-putaway</module>
-        <module>spring-boot-dispatcher-preadvice</module>
+        <module>spring-boot-dispatcher-receiving</module>
         <module>spring-boot-dispatcher-service</module>
         <module>spring-boot-dispatcher-shipping</module>
         <module>spring-boot-dispatcher-transportation</module>
