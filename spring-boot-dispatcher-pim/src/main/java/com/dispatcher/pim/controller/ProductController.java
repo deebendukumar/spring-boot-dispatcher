@@ -17,8 +17,9 @@
 package com.dispatcher.pim.controller;
 
 import com.dispatcher.common.base.AbstractWebController;
-import com.dispatcher.pim.entity.Product;
-import com.dispatcher.pim.service.ProductService;
+import com.dispatcher.odoo.facade.OdooAbstractApiService;
+import com.dispatcher.pim.service.impl.ProductServiceImpl;
+import com.dispatcher.pim.service.impl.WarehouseApiService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,6 +28,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/products")
 @Tag(name = "Products", description = "")
@@ -34,17 +39,25 @@ public class ProductController extends AbstractWebController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-    private final ProductService<Product> service;
+    private final ProductServiceImpl service;
 
-    ProductController(ProductService<Product> service) {
+    ProductController(ProductServiceImpl service) {
         this.service = service;
     }
 
     @GetMapping(path = "")
-    @Operation(summary = "")
-    public Product find(@PathVariable String id,
-            HttpServletRequest request,
-            HttpServletResponse response) {
+    @Operation(summary = "Get all products")
+    public List<HashMap<String, Object>> find(@RequestParam("name") Optional<String> code,
+                                              HttpServletRequest request,
+                                              HttpServletResponse response) {
+        return service.findAll();
+    }
+
+    @GetMapping(path = "/{id}")
+    @Operation(summary = "Get product by ID")
+    public HashMap<String, Object> findById(@PathVariable Integer id,
+                                            HttpServletRequest request,
+                                            HttpServletResponse response) {
         return service.findByPKey(id);
     }
 }
