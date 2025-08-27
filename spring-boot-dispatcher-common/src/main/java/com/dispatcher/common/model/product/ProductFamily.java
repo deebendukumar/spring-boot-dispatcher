@@ -14,29 +14,7 @@
  * limitations under the License.
  */
 
-package com.dispatcher.common.model;
+package com.dispatcher.common.model.product;
 
-import com.dispatcher.common.base.Auditable;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Builder;
-import lombok.Data;
-
-@JsonPropertyOrder({
-        "id"
-})
-@Data
-@Builder
-public class Image implements Auditable {
-
-    @JsonProperty(value = "name")
-    private String name;
-
-    @JsonProperty(value = "src")
-    private String src;
-
-    public static Image valueOf() {
-        return builder()
-                .build();
-    }
+public class ProductFamily {
 }

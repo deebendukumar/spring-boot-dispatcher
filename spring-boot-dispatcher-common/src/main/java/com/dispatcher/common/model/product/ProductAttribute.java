@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.dispatcher.common.model;
+package com.dispatcher.common.model.product;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

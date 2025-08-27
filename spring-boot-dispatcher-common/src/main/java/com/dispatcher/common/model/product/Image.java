@@ -14,37 +14,28 @@
  * limitations under the License.
  */
 
-package com.dispatcher.common.model;
+package com.dispatcher.common.model.product;
 
-import com.dispatcher.common.base.BaseEntity;
+import com.dispatcher.common.base.Auditable;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
 import lombok.Data;
 
 @JsonPropertyOrder({
-        "id",
-        "name",
-        "body",
-        "body_html"
+        "id"
 })
 @Data
 @Builder
-public class Category extends BaseEntity {
+public class Image implements Auditable {
 
     @JsonProperty(value = "name")
     private String name;
 
-    @JsonProperty(value = "body")
-    private String body;
+    @JsonProperty(value = "src")
+    private String src;
 
-    @JsonProperty(value = "body_html")
-    private String bodyHtml;
-
-    @JsonProperty(value = "active")
-    private Boolean active;
-
-    public static Category valueOf() {
+    public static Image valueOf() {
         return builder()
                 .build();
     }

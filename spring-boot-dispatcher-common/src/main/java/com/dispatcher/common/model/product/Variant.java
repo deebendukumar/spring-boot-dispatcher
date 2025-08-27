@@ -14,43 +14,28 @@
  * limitations under the License.
  */
 
-package com.dispatcher.common.model;
+package com.dispatcher.common.model.product;
 
 import com.dispatcher.common.base.BaseEntity;
+import com.dispatcher.common.model.Bin;
+import com.dispatcher.common.model.Hazmat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
 import lombok.Data;
-
-import java.util.List;
 
 @JsonPropertyOrder({
         "id"
 })
 @Data
 @Builder
-public class Product extends BaseEntity {
+public class Variant extends BaseEntity {
 
-    @JsonProperty(value = "client_id")
-    private String clientId;
-
-    @JsonProperty(value = "site_id")
-    private String siteId;
-
-    @JsonProperty(value = "brand")
-    private Brand brand;
-
-    @JsonProperty(value = "categories")
-    private List<Category> categories;
+    @JsonProperty(value = "product_id")
+    private String productId;
 
     @JsonProperty(value = "title")
     private String title;
-
-    @JsonProperty(value = "product_type")
-    private String productType;
-
-    @JsonProperty(value = "status")
-    private String status;
 
     @JsonProperty(value = "body")
     private String body;
@@ -61,13 +46,43 @@ public class Product extends BaseEntity {
     @JsonProperty(value = "short_description")
     private String shortDescription;
 
-    @JsonProperty(value = "tags")
-    private List<String> tags;
+    @JsonProperty(value = "sku")
+    private String sku;
 
-    @JsonProperty(value = "has_attributes")
-    private Boolean hadAttributes;
+    @JsonProperty(value = "barcode")
+    private String barcode;
 
-    public static Product valueOf() {
+    @JsonProperty(value = "serial_no")
+    private String serialNo;
+
+    @JsonProperty(value = "active")
+    private Boolean active;
+
+    @JsonProperty(value = "fragile")
+    private Boolean fragile;
+
+    @JsonProperty(value = "hazmat")
+    private Hazmat hazmat; //Whether a hazardous material or not
+
+    @JsonProperty(value = "bin")
+    private Bin bin;
+
+    @JsonProperty(value = "unit")
+    private String unit;
+
+    @JsonProperty(value = "units_per_case")
+    private String unitsPerCase;
+
+    @JsonProperty(value = "cases_per_pallet")
+    private String casesPerPallet;
+
+    @JsonProperty(value = "min_order_size")
+    private String minOrderSize;
+
+    @JsonProperty(value = "user_def_1")
+    private String userDef1;
+
+    public static Variant valueOf() {
         return builder()
                 .build();
     }

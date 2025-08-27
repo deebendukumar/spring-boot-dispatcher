@@ -17,6 +17,7 @@
 package com.dispatcher.common.model;
 
 import com.dispatcher.common.base.BaseEntity;
+import com.dispatcher.common.model.product.Dimension;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;

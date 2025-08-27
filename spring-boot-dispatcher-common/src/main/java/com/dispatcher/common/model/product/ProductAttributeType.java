@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package com.dispatcher.common.model;
+package com.dispatcher.common.model.product;
 
-import com.dispatcher.common.base.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
@@ -24,30 +23,16 @@ import lombok.Data;
 
 @JsonPropertyOrder({
         "id",
-        "name",
-        "body",
-        "body_html"
+        "name"
 })
 @Data
 @Builder
-public class Brand extends BaseEntity {
+public class ProductAttributeType {
 
     @JsonProperty(value = "name")
     private String name;
 
-    @JsonProperty(value = "code")
-    private String code;
-
-    @JsonProperty(value = "body")
-    private String body;
-
-    @JsonProperty(value = "body_html")
-    private String bodyHtml;
-
-    @JsonProperty(value = "active")
-    private Boolean active;
-
-    public static Brand valueOf() {
+    public static ProductAttributeType valueOf() {
         return builder()
                 .build();
     }

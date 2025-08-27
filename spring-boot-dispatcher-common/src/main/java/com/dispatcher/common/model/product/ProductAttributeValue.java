@@ -14,7 +14,29 @@
  * limitations under the License.
  */
 
-package com.dispatcher.common.model;
+package com.dispatcher.common.model.product;
 
-public class ProductFamily {
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Builder;
+import lombok.Data;
+
+@JsonPropertyOrder({
+        "id",
+        "name"
+})
+@Data
+@Builder
+public class ProductAttributeValue {
+
+    @JsonProperty(value = "product_attribute_id")
+    private String productAttributeId;
+
+    @JsonProperty(value = "value")
+    private String value;
+
+    public static ProductAttributeValue valueOf() {
+        return builder()
+                .build();
+    }
 }
