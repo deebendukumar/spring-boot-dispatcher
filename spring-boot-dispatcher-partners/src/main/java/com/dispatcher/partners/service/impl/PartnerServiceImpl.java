@@ -17,15 +17,15 @@
 package com.dispatcher.partners.service.impl;
 
 import com.dispatcher.odoo.ObjectAdapter;
-import com.dispatcher.odoo.Row;
-import com.dispatcher.odoo.Session;
+import com.dispatcher.odoo.OdooRow;
+import com.dispatcher.odoo.OdooSession;
 import com.dispatcher.odoo.exception.OdooApiException;
 import com.dispatcher.common.model.Partner;
 import com.dispatcher.partners.repository.PartnerRepository;
 import com.dispatcher.partners.service.PartnerService;
 import com.dispatcher.service.config.MessageCodes;
 import com.dispatcher.service.exception.DataNotFoundException;
-import com.dispatcher.odoo.facade.PartnerApiClient;
+import com.dispatcher.odoo.facade.OdooPartnerApiClient;
 import org.ameba.annotation.Measured;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
@@ -48,10 +48,10 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     private final PartnerRepository repository;
     private final Translator translator;
     private final Environment environment;
-    private final Session session;
-    private final PartnerApiClient facade;
+    private final OdooSession session;
+    private final OdooPartnerApiClient facade;
 
-    PartnerServiceImpl(Environment environment, PartnerRepository repository, Translator translator, Session session) {
+    PartnerServiceImpl(Environment environment, PartnerRepository repository, Translator translator, OdooSession session) {
         this.environment = environment;
         this.repository = repository;
         this.translator = translator;
@@ -59,10 +59,10 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
         this.facade = createPartnerFacade(session);
     }
 
-    public static PartnerApiClient createPartnerFacade(Session session) {
-        PartnerApiClient facade = null;
+    public static OdooPartnerApiClient createPartnerFacade(OdooSession session) {
+        OdooPartnerApiClient facade = null;
         try {
-            facade = new PartnerApiClient(session);
+            facade = new OdooPartnerApiClient(session);
         } catch (XmlRpcException e) {
             logger.error("error creating partner facade {}", e.getMessage());
         } catch (OdooApiException e) {
@@ -84,7 +84,7 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     public List<Partner> findByPhone(String phone) {
         List<Partner> result = null;
         try {
-            List<Row> list = this.facade.find(Optional.empty(), Optional.of(phone), Optional.empty());
+            List<OdooRow> list = this.facade.find(Optional.empty(), Optional.of(phone), Optional.empty());
         } catch (OdooApiException e) {
             e.printStackTrace();
         } catch (XmlRpcException e) {
@@ -98,7 +98,7 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     public List<Partner> findByName(String name) {
         List<Partner> result = null;
         try {
-            List<Row> list = this.facade.find(Optional.of(name), Optional.empty(), Optional.empty());
+            List<OdooRow> list = this.facade.find(Optional.of(name), Optional.empty(), Optional.empty());
         } catch (OdooApiException e) {
             e.printStackTrace();
         } catch (XmlRpcException e) {
@@ -112,7 +112,7 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     public List<Partner> findAll() {
         List<Partner> result = null;
         try {
-            List<Row> list = this.facade.find(Optional.empty(), Optional.empty(), Optional.empty());
+            List<OdooRow> list = this.facade.find(Optional.empty(), Optional.empty(), Optional.empty());
         } catch (OdooApiException e) {
             e.printStackTrace();
         } catch (XmlRpcException e) {
@@ -127,7 +127,7 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
         Partner result = null;
         try {
             ObjectAdapter partners = session.getObjectAdapter("res.partner");
-            Row newPartner = partners.getNewRow(new String[]{"name", "ref", "email", "field1", "field2"});
+            OdooRow newPartner = partners.getNewRow(new String[]{"name", "ref", "email", "field1", "field2"});
             newPartner.put("name", "Jhon Doe");
             newPartner.put("ref", "Reference value");
             newPartner.put("email", "personalemail@mail.com");

@@ -22,7 +22,7 @@ import org.springframework.core.env.Environment;
 
 @Configuration
 @ComponentScan(basePackages = {"com.dispatcher.pim"})
-public class PimConfiguration {
+public class  PimConfiguration {
 
     private final Environment environment;
 

@@ -15,7 +15,7 @@
  */
 package com.dispatcher.app;
 
-import com.dispatcher.odoo.Session;
+import com.dispatcher.odoo.OdooSession;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +31,9 @@ public class Application {
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
     private final Environment environment;
-    private final Session session;
+    private final OdooSession session;
 
-    public Application(Environment environment, Session session) {
+    public Application(Environment environment, OdooSession session) {
         this.environment = environment;
         this.session = session;
     }

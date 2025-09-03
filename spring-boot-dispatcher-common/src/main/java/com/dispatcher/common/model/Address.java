@@ -28,9 +28,6 @@ public class Address implements Auditable {
     @JsonProperty(value = "street")
     private String street;
 
-    @JsonProperty(value = "street")
-    private String street2;
-
     @JsonProperty(value = "city")
     private String city;
 

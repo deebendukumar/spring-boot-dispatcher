@@ -21,7 +21,7 @@ public class TestConnection {
 
     private static Integer uid = 0;
 
-    private static Session session;
+    private static OdooSession session;
 
 //    public static boolean login() {
 //        // Try to connect to that DB to check it is still available
@@ -73,15 +73,15 @@ public class TestConnection {
 
     public static void main(String[] args) {
 //        boolean status = login();
-        session = new Session(RPCProtocol.RPC_HTTP, host, port, db, username, password);
+        session = new OdooSession(RPCProtocol.RPC_HTTP, host, port, db, username, password);
         try {
             session.startSession();
             ObjectAdapter partners = session.getObjectAdapter("res.partner");
-            FilterCollection filters = new FilterCollection();
+            OdooFilterCollection filters = new OdooFilterCollection();
 //            filters.add("name","=","SO001");
 //            RowCollection list = partners.searchAndReadObject(filters, new String[]{});
-            RowCollection list = partners.searchAndReadObject(filters, new String[]{"name", "state", "partner_id"});
-            for (Row row : list) {
+            OdooRowCollection list = partners.searchAndReadObject(filters, new String[]{"name", "state", "partner_id"});
+            for (OdooRow row : list) {
                 System.out.println(row.getID());
                 System.out.println(row.toJson());
             }

@@ -69,6 +69,10 @@
         </dependency>
 
         <dependency>
+            <groupId>com.dispatcher.spi</groupId>
+            <artifactId>spring-boot-dispatcher-spi</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.dispatcher.service</groupId>
             <artifactId>spring-boot-dispatcher-service</artifactId>
         </dependency>
@@ -83,6 +87,16 @@
         <dependency>
             <groupId>com.dispatcher.pim</groupId>
             <artifactId>spring-boot-dispatcher-pim</artifactId>
+        </dependency>
+
+        <!--adapters-->
+        <dependency>
+            <groupId>com.dispatcher.adapters.odoo</groupId>
+            <artifactId>spring-boot-dispatcher-odoo-adapter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dispatcher.adapters.zoho</groupId>
+            <artifactId>spring-boot-dispatcher-zoho-adapter</artifactId>
         </dependency>
 
         <dependency>

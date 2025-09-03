@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.dispatcher</groupId>
+        <artifactId>spring-boot-dispatcher</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <groupId>com.dispatcher.adapters</groupId>
+    <artifactId>spring-boot-dispatcher-adapters</artifactId>
+    <name>spring-boot-dispatcher-adapters</name>
+    <packaging>pom</packaging>
+    <description></description>
+    <modules>
+        <module>spring-boot-dispatcher-adapters-bom</module>
+        <module>spring-boot-dispatcher-odoo-adapter</module>
+        <module>spring-boot-dispatcher-zoho-adapter</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.apache.camel.springboot/camel-spring-boot-dependencies -->
+            <dependency>
+                <groupId>org.apache.camel.springboot</groupId>
+                <artifactId>camel-spring-boot-dependencies</artifactId>
+                <version>4.14.0</version>
+                <type>pom</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-bom</artifactId>
+                <version>4.14.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

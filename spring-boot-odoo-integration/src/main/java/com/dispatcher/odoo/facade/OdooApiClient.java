@@ -19,67 +19,74 @@ package com.dispatcher.odoo.facade;
 import com.dispatcher.odoo.*;
 import com.dispatcher.odoo.exception.OdooApiException;
 import org.apache.xmlrpc.XmlRpcException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.function.IntFunction;
 
 public abstract class OdooApiClient {
 
-    private final Session session;
+    private final OdooSession session;
     private final String resource;
     private final ObjectAdapter adapter;
 
-    public OdooApiClient(Session session, String resource) throws XmlRpcException, OdooApiException {
+    public OdooApiClient(OdooSession session, String resource) throws XmlRpcException, OdooApiException {
         this.session = session;
         this.resource = resource;
         adapter = this.session.getObjectAdapter(resource);
     }
 
-    public Row findByPKey(Integer id) throws OdooApiException, XmlRpcException {
-        Row result = null;
-        FilterCollection filters = new FilterCollection();
+    public HashMap<String, Object> findByPKey(Integer id) throws OdooApiException, XmlRpcException {
+        HashMap<String, Object> result = new HashMap<>();
+        OdooFilterCollection filters = new OdooFilterCollection();
         filters.add("id", "=", id);
-        List<Row> list = find(filters);
+        List<OdooRow> list = find(filters);
         if (list != null && !list.isEmpty()) {
-            result = list.get(0);
+            OdooRow row = list.get(0);
+            result = row.getFieldsOdoo();
         }
         return result;
     }
 
-    public List<Row> find(FilterCollection filters) throws XmlRpcException, OdooApiException {
-        List<Row> result = new ArrayList<>();
-        RowCollection list = adapter.searchAndReadObject(filters, new String[]{});
-        for (Row row : list) {
+    public List<HashMap<String, Object>> findAll() throws XmlRpcException, OdooApiException {
+        List<HashMap<String, Object>> result = new ArrayList<>();
+        List<OdooRow> list = find(new OdooFilterCollection());
+        for (OdooRow row : list) {
+            result.add(row.getFieldsOdoo());
+        }
+        return result;
+    }
+
+    protected List<OdooRow> find(OdooFilterCollection filters) throws XmlRpcException, OdooApiException {
+        List<OdooRow> result = new ArrayList<>();
+        OdooRowCollection list = adapter.searchAndReadObject(filters, new String[]{});
+        for (OdooRow row : list) {
             result.add(row);
         }
         return result;
     }
 
-    public List<Row> find(FilterCollection filters, List<String> fields) throws XmlRpcException, OdooApiException {
-        List<Row> result = new ArrayList<>();
-        RowCollection list = adapter.searchAndReadObject(filters, fields.toArray(new String[0]));
-        for (Row row : list) {
+    protected List<OdooRow> find(OdooFilterCollection filters, List<String> fields) throws XmlRpcException, OdooApiException {
+        List<OdooRow> result = new ArrayList<>();
+        OdooRowCollection list = adapter.searchAndReadObject(filters, fields.toArray(new String[0]));
+        for (OdooRow row : list) {
             result.add(row);
         }
         return result;
     }
 
-    public void create(Row row) throws XmlRpcException, OdooApiException {
+    public void create(OdooRow row) throws XmlRpcException, OdooApiException {
         adapter.createObject(row);
     }
 
-    public boolean update(Row row) throws XmlRpcException, OdooApiException {
+    public boolean update(OdooRow row) throws XmlRpcException, OdooApiException {
         return adapter.writeObject(row, true);
     }
 
     public void delete(Integer id) throws OdooApiException, XmlRpcException {
-        FilterCollection filters = new FilterCollection();
+        OdooFilterCollection filters = new OdooFilterCollection();
         filters.add("id", "=", id);
-        RowCollection list = adapter.searchAndReadObject(filters, new String[]{});
+        OdooRowCollection list = adapter.searchAndReadObject(filters, new String[]{});
         adapter.unlinkObject(list);
     }
 }

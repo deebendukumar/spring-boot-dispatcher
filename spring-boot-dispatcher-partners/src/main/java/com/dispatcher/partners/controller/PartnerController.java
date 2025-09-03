@@ -16,7 +16,7 @@
 
 package com.dispatcher.partners.controller;
 
-import com.dispatcher.common.base.AbstractWebController;
+import com.dispatcher.service.base.AbstractWebController;
 import com.dispatcher.common.model.Partner;
 import com.dispatcher.partners.service.PartnerService;
 import io.swagger.v3.oas.annotations.Operation;

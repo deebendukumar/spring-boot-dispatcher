@@ -26,14 +26,14 @@ import java.util.Map;
  */
 public class OdooCommand {
 
-    private final Session session;
+    private final OdooSession session;
 
     /**
      * Main constructor
      *
      * @param session Session object that will be used to make the calls to Odoo.
      */
-    public OdooCommand(Session session) {
+    public OdooCommand(OdooSession session) {
         this.session = session;
     }
 
@@ -47,8 +47,8 @@ public class OdooCommand {
      * @return Response that need to be parsed from the calling method to check if
      * successful and then adapt the result as an array.
      */
-    public Response searchObject(String objectName, Object[] filter) throws XmlRpcException {
-        return (Response) searchObject(objectName, filter, -1, -1, null, false);
+    public OdooResponse searchObject(String objectName, Object[] filter) throws XmlRpcException {
+        return (OdooResponse) searchObject(objectName, filter, -1, -1, null, false);
     }
 
     /**
@@ -66,7 +66,7 @@ public class OdooCommand {
      * returned and could be parsed as Object[] of IDs if response is
      * successfull
      */
-    public Response searchObject(String objectName, Object[] filter, int offset, int limit, String order, boolean count)
+    public OdooResponse searchObject(String objectName, Object[] filter, int offset, int limit, String order, boolean count)
             throws XmlRpcException {
         Object offsetParam = offset < 0 ? false : offset;
         Object limitParam = limit < 0 ? false : limit;
@@ -95,13 +95,13 @@ public class OdooCommand {
         try {
             // TODO: test differents version with search on quantity on products
             // with location_id in the context to check that it works or not
-            Response response = (this.session.getServerVersion().getMajor() < 10)
-                    ? new Response(session.executeCommand(objectName, "search", params))
-                    : new Response(session.executeCommandWithContext(objectName, "search", params));
+            OdooResponse response = (this.session.getServerVersion().getMajor() < 10)
+                    ? new OdooResponse(session.executeCommand(objectName, "search", params))
+                    : new OdooResponse(session.executeCommandWithContext(objectName, "search", params));
 
             return response;
         } catch (XmlRpcException e) {
-            return new Response(e);
+            return new OdooResponse(e);
         }
     }
 
@@ -262,11 +262,11 @@ public class OdooCommand {
      * @param parameters   Additional parameters that will be passed to the object
      * @return An Object array of values
      */
-    public Response callObjectFunction(String objectName, String functionName, Object[] parameters) {
+    public OdooResponse callObjectFunction(String objectName, String functionName, Object[] parameters) {
         try {
-            return new Response(session.executeCommand(objectName, functionName, parameters));
+            return new OdooResponse(session.executeCommand(objectName, functionName, parameters));
         } catch (XmlRpcException e) {
-            return new Response(e);
+            return new OdooResponse(e);
         }
     }
 

@@ -15,16 +15,35 @@
  */
 package com.dispatcher.app.config;
 
+import com.dispatcher.spi.LocationServiceInterface;
+import com.dispatcher.spi.ServiceAdapter;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+
+import java.util.ServiceLoader;
 
 @Configuration
 public class DispatcherConfiguration {
 
     private final Environment environment;
+    private final Adapters adapters;
 
     DispatcherConfiguration(Environment environment) {
         this.environment = environment;
+        this.adapters = new Adapters();
     }
 
+    @Bean
+    public ServiceLoader<ServiceAdapter> warehouse() {
+        ServiceLoader<ServiceAdapter> loader = ServiceLoader.load(ServiceAdapter.class);
+        return loader;
+    }
+
+    @Bean
+    public ServiceLoader<LocationServiceInterface> location() {
+        ServiceLoader<LocationServiceInterface> loader = ServiceLoader.load(LocationServiceInterface.class);
+        this.adapters.setLocationServiceLoader(loader);
+        return loader;
+    }
 }

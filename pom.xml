@@ -94,6 +94,8 @@
         <module>spring-boot-dispatcher-shipping</module>
         <module>spring-boot-dispatcher-transportation</module>
         <module>spring-boot-dispatcher-uaa</module>
+        <module>spring-boot-dispatcher-spi</module>
+        <module>spring-boot-dispatcher-adapters</module>
         <module>spring-boot-odoo-integration</module>
     </modules>
     <!--
@@ -199,7 +201,6 @@
                 <version>3.0.2</version>
             </dependency>
 
-
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
@@ -254,10 +255,33 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.dispatcher.spi</groupId>
+                <artifactId>spring-boot-dispatcher-spi</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.dispatcher.odoo</groupId>
                 <artifactId>spring-boot-odoo-integration</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.dispatcher.adapters</groupId>
+                <artifactId>spring-boot-dispatcher-adapters-bom</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dispatcher.adapters.odoo</groupId>
+                <artifactId>spring-boot-dispatcher-odoo-adapter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dispatcher.adapters.zoho</groupId>
+                <artifactId>spring-boot-dispatcher-zoho-adapter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
 
             <!-- https://mvnrepository.com/artifact/org.apache.xmlrpc/xmlrpc-client -->
             <dependency>
@@ -275,7 +299,6 @@
                 <artifactId>jsonrpc4j</artifactId>
                 <version>1.5.1</version>
             </dependency>
-
 
             <!--testing dependencies -->
             <dependency>

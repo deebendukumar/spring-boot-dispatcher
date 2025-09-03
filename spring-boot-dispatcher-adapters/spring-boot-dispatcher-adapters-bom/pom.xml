@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.dispatcher.adapters</groupId>
+        <artifactId>spring-boot-dispatcher-adapters</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <groupId>com.dispatcher.adapters</groupId>
+    <artifactId>spring-boot-dispatcher-adapters-bom</artifactId>
+    <name>spring-boot-dispatcher-adapters-bom</name>
+    <packaging>pom</packaging>
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.apache.camel.springboot/camel-spring-boot-dependencies -->
+            <dependency>
+                <groupId>com.dispatcher.adapters.odoo</groupId>
+                <artifactId>spring-boot-dispatcher-odoo-adapter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dispatcher.adapters.zoho</groupId>
+                <artifactId>spring-boot-dispatcher-zoho-adapter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+</project>
