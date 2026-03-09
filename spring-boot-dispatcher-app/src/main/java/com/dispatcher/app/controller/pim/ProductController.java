@@ -43,6 +43,7 @@ public class ProductController extends AbstractWebController {
         this.service = service;
     }
 
+
 //    @GetMapping(path = "")
 //    @Operation(summary = "Get all products")
 //    public List<HashMap<String, Object>> find(@RequestParam("name") Optional<String> code,

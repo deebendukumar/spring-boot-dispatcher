@@ -87,7 +87,6 @@
         <module>spring-boot-dispatcher-loadbalancer</module>
         <module>spring-boot-dispatcher-partners</module>
         <module>spring-boot-dispatcher-picking</module>
-        <module>spring-boot-dispatcher-pim</module>
         <module>spring-boot-dispatcher-putaway</module>
         <module>spring-boot-dispatcher-receiving</module>
         <module>spring-boot-dispatcher-service</module>
@@ -97,6 +96,7 @@
         <module>spring-boot-dispatcher-spi</module>
         <module>spring-boot-dispatcher-adapters</module>
         <module>spring-boot-odoo-integration</module>
+        <module>spring-boot-dispatcher-packing</module>
     </modules>
     <!--
     If you specify a dependency in the dependencyManagement tag, it simply means that you are making this jar available
