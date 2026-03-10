@@ -16,12 +16,9 @@
 
 package com.dispatcher.app.service.common;
 
-import com.dispatcher.odoo.OdooSession;
-import com.dispatcher.odoo.exception.OdooApiException;
-import com.dispatcher.odoo.facade.OdooCountryApiClient;
+import com.dispatcher.adapters.odoo.OdooSession;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
-import org.apache.xmlrpc.XmlRpcException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;

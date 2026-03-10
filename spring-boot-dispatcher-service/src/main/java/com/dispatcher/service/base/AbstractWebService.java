@@ -16,7 +16,7 @@
 package com.dispatcher.service.base;
 
 
-import com.dispatcher.spi.ServiceAdapter;
+import com.dispatcher.adapters.odoo.service.ServiceAdapter;
 import org.springframework.context.ApplicationContext;
 
 import java.util.Optional;

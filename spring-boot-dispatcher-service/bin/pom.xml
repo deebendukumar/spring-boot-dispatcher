@@ -44,10 +44,6 @@
             <groupId>com.dispatcher.common</groupId>
             <artifactId>spring-boot-dispatcher-common</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.dispatcher.odoo</groupId>
-            <artifactId>spring-boot-odoo-integration</artifactId>
-        </dependency>
 
         <!--external-->
         <dependency>

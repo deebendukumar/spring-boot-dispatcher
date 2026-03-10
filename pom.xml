@@ -93,10 +93,9 @@
         <module>spring-boot-dispatcher-shipping</module>
         <module>spring-boot-dispatcher-transportation</module>
         <module>spring-boot-dispatcher-uaa</module>
-        <module>spring-boot-dispatcher-spi</module>
-        <module>spring-boot-dispatcher-adapters</module>
-        <module>spring-boot-odoo-integration</module>
+        <module>spring-boot-dispatcher-adapter</module>
         <module>spring-boot-dispatcher-packing</module>
+        <module>spring-boot-dispatcher-odoo-adapter</module>
     </modules>
     <!--
     If you specify a dependency in the dependencyManagement tag, it simply means that you are making this jar available
@@ -200,6 +199,11 @@
                 <artifactId>jakarta.validation-api</artifactId>
                 <version>3.0.2</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-core</artifactId>
+                <version>4.14.0</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.mapstruct</groupId>
@@ -255,30 +259,13 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.dispatcher.spi</groupId>
-                <artifactId>spring-boot-dispatcher-spi</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.dispatcher.odoo</groupId>
-                <artifactId>spring-boot-odoo-integration</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.dispatcher.adapters</groupId>
-                <artifactId>spring-boot-dispatcher-adapters-bom</artifactId>
+                <groupId>com.dispatcher.adapter</groupId>
+                <artifactId>spring-boot-dispatcher-adapter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.dispatcher.adapters.odoo</groupId>
                 <artifactId>spring-boot-dispatcher-odoo-adapter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dispatcher.adapters.zoho</groupId>
-                <artifactId>spring-boot-dispatcher-zoho-adapter</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

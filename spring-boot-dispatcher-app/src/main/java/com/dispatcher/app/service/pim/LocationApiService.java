@@ -17,8 +17,8 @@
 package com.dispatcher.app.service.pim;
 
 import com.dispatcher.service.base.AbstractWebService;
-import com.dispatcher.spi.LocationServiceInterface;
-import com.dispatcher.spi.ServiceAdapter;
+import com.dispatcher.adapters.odoo.service.LocationServiceInterface;
+import com.dispatcher.adapters.odoo.service.ServiceAdapter;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
 import org.slf4j.Logger;

@@ -1,8 +1,8 @@
 package com.dispatcher.app.config;
 
-import com.dispatcher.spi.LocationServiceInterface;
-import com.dispatcher.spi.WarehouseServiceInterface;
-import com.dispatcher.spi.ServiceAdapter;
+import com.dispatcher.adapters.odoo.service.LocationServiceInterface;
+import com.dispatcher.adapters.odoo.service.WarehouseServiceInterface;
+import com.dispatcher.adapters.odoo.service.ServiceAdapter;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 

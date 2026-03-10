@@ -1,6 +1,5 @@
 package com.dispatcher.service.integration.odoo;
 
-import com.dispatcher.odoo.*;
 import lombok.SneakyThrows;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;

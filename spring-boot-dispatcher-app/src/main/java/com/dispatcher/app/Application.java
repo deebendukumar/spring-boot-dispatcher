@@ -15,7 +15,6 @@
  */
 package com.dispatcher.app;
 
-import com.dispatcher.odoo.OdooSession;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,15 +24,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.dispatcher" })
+@ComponentScan(basePackages = {"com.dispatcher"})
 public class Application {
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
     private final Environment environment;
-    private final OdooSession session;
 
-    public Application(Environment environment, OdooSession session) {
+    public Application(Environment environment) {
         this.environment = environment;
         this.session = session;
     }
@@ -55,7 +53,6 @@ public class Application {
     public void init() {
         // TODO
         try {
-            session.startSession();
         } catch (Exception e) {
             logger.error("error in connecting odoo server");
         }

@@ -16,16 +16,16 @@
 
 package com.dispatcher.partners.service.impl;
 
-import com.dispatcher.odoo.ObjectAdapter;
-import com.dispatcher.odoo.OdooRow;
-import com.dispatcher.odoo.OdooSession;
-import com.dispatcher.odoo.exception.OdooApiException;
+import com.dispatcher.adapter.odoo.ObjectAdapter;
+import com.dispatcher.adapter.odoo.OdooRow;
+import com.dispatcher.adapter.odoo.OdooSession;
+import com.dispatcher.adapters.odoo.exception.OdooApiException;
 import com.dispatcher.common.model.Partner;
 import com.dispatcher.partners.repository.PartnerRepository;
 import com.dispatcher.partners.service.PartnerService;
 import com.dispatcher.service.config.MessageCodes;
 import com.dispatcher.service.exception.DataNotFoundException;
-import com.dispatcher.odoo.facade.OdooPartnerApiClient;
+import com.dispatcher.adapters.odoo.facade.OdooPartnerApiClient;
 import org.ameba.annotation.Measured;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;

@@ -16,13 +16,10 @@
 
 package com.dispatcher.app.service.pim;
 
-import com.dispatcher.odoo.OdooSession;
-import com.dispatcher.odoo.exception.OdooApiException;
-import com.dispatcher.odoo.facade.OdooProductApiClient;
+import com.dispatcher.adapters.odoo.OdooSession;
 import com.dispatcher.service.base.AbstractWebService;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
-import org.apache.xmlrpc.XmlRpcException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;

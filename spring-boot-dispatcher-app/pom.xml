@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.dispatcher</groupId>
@@ -69,10 +69,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.dispatcher.spi</groupId>
-            <artifactId>spring-boot-dispatcher-spi</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.dispatcher.service</groupId>
             <artifactId>spring-boot-dispatcher-service</artifactId>
         </dependency>
@@ -93,10 +89,6 @@
         <dependency>
             <groupId>com.dispatcher.adapters.odoo</groupId>
             <artifactId>spring-boot-dispatcher-odoo-adapter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.dispatcher.adapters.zoho</groupId>
-            <artifactId>spring-boot-dispatcher-zoho-adapter</artifactId>
         </dependency>
 
         <dependency>

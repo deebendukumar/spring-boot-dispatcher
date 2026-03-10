@@ -15,8 +15,8 @@
  */
 package com.dispatcher.app.config;
 
-import com.dispatcher.spi.LocationServiceInterface;
-import com.dispatcher.spi.ServiceAdapter;
+import com.dispatcher.adapters.odoo.service.LocationServiceInterface;
+import com.dispatcher.adapters.odoo.service.ServiceAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
