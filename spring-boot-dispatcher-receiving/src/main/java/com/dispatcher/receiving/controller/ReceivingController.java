@@ -18,7 +18,7 @@ package com.dispatcher.receiving.controller;
 
 import com.dispatcher.receiving.contract.ReceivingRequest;
 import com.dispatcher.receiving.contract.ReceivingResponse;
-import com.dispatcher.service.base.AbstractWebController;
+import com.dispatcher.common.base.AbstractWebController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;

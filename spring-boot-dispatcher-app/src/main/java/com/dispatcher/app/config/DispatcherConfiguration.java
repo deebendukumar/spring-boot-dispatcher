@@ -26,12 +26,12 @@ import java.util.ServiceLoader;
 @Configuration
 public class DispatcherConfiguration {
 
-    private final Environment environment;
     private final Adapters adapters;
+    private final String platform;
 
     DispatcherConfiguration(Environment environment) {
-        this.environment = environment;
         this.adapters = new Adapters();
+        this.platform = environment.getProperty("dispatcher.platform");
     }
 
     @Bean
@@ -45,5 +45,9 @@ public class DispatcherConfiguration {
         ServiceLoader<LocationServiceInterface> loader = ServiceLoader.load(LocationServiceInterface.class);
         this.adapters.setLocationServiceLoader(loader);
         return loader;
+    }
+
+    public String getPlatform() {
+        return platform;
     }
 }

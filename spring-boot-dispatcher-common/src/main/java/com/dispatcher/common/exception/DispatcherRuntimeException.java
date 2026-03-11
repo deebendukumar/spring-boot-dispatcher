@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.dispatcher.service.exception;
+package com.dispatcher.common.exception;
 
 import java.io.Serializable;
 

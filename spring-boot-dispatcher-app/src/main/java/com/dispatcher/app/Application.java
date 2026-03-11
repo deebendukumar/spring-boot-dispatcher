@@ -33,7 +33,6 @@ public class Application {
 
     public Application(Environment environment) {
         this.environment = environment;
-        this.session = session;
     }
 
     /**

@@ -16,7 +16,7 @@
 
 package com.dispatcher.shipping.controller;
 
-import com.dispatcher.service.base.AbstractWebController;
+import com.dispatcher.common.base.AbstractWebController;
 import com.dispatcher.shipping.contract.ShippingRequest;
 import com.dispatcher.shipping.contract.ShippingResponse;
 import io.swagger.v3.oas.annotations.Operation;

@@ -38,10 +38,13 @@
             <artifactId>spring-boot-starter-validation</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
-            <groupId>com.dispatcher.service</groupId>
-            <artifactId>spring-boot-dispatcher-service</artifactId>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dispatcher.common</groupId>
+            <artifactId>spring-boot-dispatcher-common</artifactId>
         </dependency>
 
         <dependency>

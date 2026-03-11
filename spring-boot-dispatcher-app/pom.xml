@@ -69,10 +69,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.dispatcher.service</groupId>
-            <artifactId>spring-boot-dispatcher-service</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.dispatcher.common</groupId>
             <artifactId>spring-boot-dispatcher-common</artifactId>
         </dependency>
@@ -115,5 +111,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

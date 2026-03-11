@@ -16,7 +16,7 @@
 
 package com.dispatcher.app.controller.pim;
 
-import com.dispatcher.service.base.AbstractWebController;
+import com.dispatcher.common.base.AbstractWebController;
 import com.dispatcher.app.service.pim.LocationApiService;
 
 import io.swagger.v3.oas.annotations.Operation;

@@ -18,7 +18,7 @@ package com.dispatcher.inventory.controller;
 
 import com.dispatcher.inventory.contract.LocationRequest;
 import com.dispatcher.inventory.contract.LocationResponse;
-import com.dispatcher.service.base.AbstractWebController;
+import com.dispatcher.common.base.AbstractWebController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;

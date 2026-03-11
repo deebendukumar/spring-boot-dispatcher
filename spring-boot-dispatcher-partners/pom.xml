@@ -34,6 +34,15 @@
             <artifactId>spring-boot-starter-validation</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.dispatcher.common</groupId>
+            <artifactId>spring-boot-dispatcher-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dispatcher.adapters.odoo</groupId>
+            <artifactId>spring-boot-dispatcher-odoo-adapter</artifactId>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
         <dependency>
@@ -46,11 +55,6 @@
             <artifactId>ameba-lib</artifactId>
             <optional>true</optional>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.dispatcher.service</groupId>
-            <artifactId>spring-boot-dispatcher-service</artifactId>
         </dependency>
 
         <dependency>

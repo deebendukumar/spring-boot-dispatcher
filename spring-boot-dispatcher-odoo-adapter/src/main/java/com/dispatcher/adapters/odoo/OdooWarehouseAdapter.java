@@ -14,7 +14,7 @@ public class OdooWarehouseAdapter implements WarehouseAdapter {
 
     @Override
     public String getPlatform() {
-        return "";
+        return "odoo";
     }
 
     @Override

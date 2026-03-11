@@ -16,7 +16,7 @@
 
 package com.dispatcher.app.service.pim;
 
-import com.dispatcher.service.base.AbstractWebService;
+import com.dispatcher.common.base.AbstractWebService;
 import com.dispatcher.adapters.odoo.service.ServiceAdapter;
 import com.dispatcher.adapters.odoo.service.WarehouseServiceInterface;
 import org.ameba.annotation.TxService;
@@ -43,27 +43,9 @@ public class WarehouseApiService extends AbstractWebService {
 
     WarehouseApiService(ApplicationContext applicationContext,
                         Environment environment,
-                        Translator translator,
-                        ServiceLoader<ServiceAdapter> loader) {
+                        Translator translator) {
         this.applicationContext = applicationContext;
         this.environment = environment;
         this.translator = translator;
-        this.loader = loader;
-    }
-
-    public List<HashMap<String, Object>> test() {
-        ServiceAdapter serviceAdapter = findBeanByName(applicationContext, "odoo");
-        WarehouseServiceInterface warehouseServiceInterface = serviceAdapter.getWarehouseServiceInterface();
-        warehouseServiceInterface.findAll();
-        return new ArrayList<>();
-    }
-
-    private List fields() {
-        Optional<ServiceAdapter> optional = findServiceInterfaceByName(environment.getProperty("default.dispatcher.adapter"));
-        ServiceAdapter serviceInterface = null;
-        if(optional.isPresent()) {
-            serviceInterface = optional.get();
-        }
-        return List.of("id", "write_date");
     }
 }

@@ -16,15 +16,11 @@
 
 package com.dispatcher.partners.service.impl;
 
-import com.dispatcher.adapter.odoo.ObjectAdapter;
-import com.dispatcher.adapter.odoo.OdooRow;
-import com.dispatcher.adapter.odoo.OdooSession;
+import com.dispatcher.adapters.odoo.OdooSession;
 import com.dispatcher.adapters.odoo.exception.OdooApiException;
 import com.dispatcher.common.model.Partner;
-import com.dispatcher.partners.repository.PartnerRepository;
 import com.dispatcher.partners.service.PartnerService;
-import com.dispatcher.service.config.MessageCodes;
-import com.dispatcher.service.exception.DataNotFoundException;
+import com.dispatcher.common.exception.DataNotFoundException;
 import com.dispatcher.adapters.odoo.facade.OdooPartnerApiClient;
 import org.ameba.annotation.Measured;
 import org.ameba.annotation.TxService;
@@ -45,15 +41,13 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
 
     private static final Logger logger = LoggerFactory.getLogger(PartnerServiceImpl.class);
 
-    private final PartnerRepository repository;
     private final Translator translator;
     private final Environment environment;
     private final OdooSession session;
     private final OdooPartnerApiClient facade;
 
-    PartnerServiceImpl(Environment environment, PartnerRepository repository, Translator translator, OdooSession session) {
+    PartnerServiceImpl(Environment environment, Translator translator, OdooSession session) {
         this.environment = environment;
-        this.repository = repository;
         this.translator = translator;
         this.session = session;
         this.facade = createPartnerFacade(session);
@@ -72,96 +66,37 @@ public class PartnerServiceImpl implements PartnerService<Partner> {
     }
 
     @Override
-    @Measured
     public Partner findByPKey(String id) {
-        return repository.findById(id).orElseThrow(() -> new DataNotFoundException(translator,
-                MessageCodes.TO_WITH_PK_NOT_FOUND,
-                new String[]{id}, id));
-    }
-
-    @Override
-    @Measured
-    public List<Partner> findByPhone(String phone) {
-        List<Partner> result = null;
-        try {
-            List<OdooRow> list = this.facade.find(Optional.empty(), Optional.of(phone), Optional.empty());
-        } catch (OdooApiException e) {
-            e.printStackTrace();
-        } catch (XmlRpcException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    @Override
-    @Measured
-    public List<Partner> findByName(String name) {
-        List<Partner> result = null;
-        try {
-            List<OdooRow> list = this.facade.find(Optional.of(name), Optional.empty(), Optional.empty());
-        } catch (OdooApiException e) {
-            e.printStackTrace();
-        } catch (XmlRpcException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    @Override
-    @Measured
-    public List<Partner> findAll() {
-        List<Partner> result = null;
-        try {
-            List<OdooRow> list = this.facade.find(Optional.empty(), Optional.empty(), Optional.empty());
-        } catch (OdooApiException e) {
-            e.printStackTrace();
-        } catch (XmlRpcException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    @Override
-    @Measured
-    public Partner create(Partner partner) {
-        Partner result = null;
-        try {
-            ObjectAdapter partners = session.getObjectAdapter("res.partner");
-            OdooRow newPartner = partners.getNewRow(new String[]{"name", "ref", "email", "field1", "field2"});
-            newPartner.put("name", "Jhon Doe");
-            newPartner.put("ref", "Reference value");
-            newPartner.put("email", "personalemail@mail.com");
-            newPartner.put("field1", "1");
-            newPartner.put("field2", "2");
-            partners.createObject(newPartner);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    @Override
-    @Measured
-    public Partner update(String id, Partner partner) {
-//        return repository.findById(id)
-//                .map(existingPartner -> {
-//                    partner.setId(id);
-//                    return repository.save(partner);
-//                })
-//                .orElseThrow(() -> new DataNotFoundException(translator,
-//                        MessageCodes.TO_WITH_PK_NOT_FOUND,
-//                        new String[]{id}, id));
         return null;
     }
 
     @Override
-    @Measured
+    public List<Partner> findByPhone(String phone) {
+        return List.of();
+    }
+
+    @Override
+    public List<Partner> findByName(String name) {
+        return List.of();
+    }
+
+    @Override
+    public List<Partner> findAll() {
+        return List.of();
+    }
+
+    @Override
+    public Partner create(Partner partner) {
+        return null;
+    }
+
+    @Override
+    public Partner update(String id, Partner partner) {
+        return null;
+    }
+
+    @Override
     public Partner delete(String id) {
-        return repository.findById(id)
-                .map(partner -> {
-                    repository.delete(partner);
-                    return partner;
-                })
-                .orElseThrow(() -> new NoSuchElementException("Partner with id " + id + " not found"));
+        return null;
     }
 }

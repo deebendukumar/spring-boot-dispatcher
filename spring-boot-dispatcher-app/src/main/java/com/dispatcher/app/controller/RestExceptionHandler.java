@@ -15,7 +15,7 @@
  */
 package com.dispatcher.app.controller;
 
-import com.dispatcher.service.exception.DataNotFoundException;
+import com.dispatcher.common.exception.DataNotFoundException;
 import org.ameba.http.Response;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;

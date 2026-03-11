@@ -47,6 +47,24 @@
         <url></url>
         <tag></tag>
     </scm>
+    <modules>
+        <module>spring-boot-dispatcher-app</module>
+        <module>spring-boot-dispatcher-common</module>
+        <module>spring-boot-dispatcher-discovery</module>
+        <module>spring-boot-dispatcher-gateway</module>
+        <module>spring-boot-dispatcher-inventory</module>
+        <module>spring-boot-dispatcher-loadbalancer</module>
+        <module>spring-boot-dispatcher-partners</module>
+        <module>spring-boot-dispatcher-picking</module>
+        <module>spring-boot-dispatcher-putaway</module>
+        <module>spring-boot-dispatcher-receiving</module>
+        <module>spring-boot-dispatcher-shipping</module>
+        <module>spring-boot-dispatcher-transportation</module>
+        <module>spring-boot-dispatcher-uaa</module>
+        <module>spring-boot-dispatcher-adapter</module>
+        <module>spring-boot-dispatcher-packing</module>
+        <module>spring-boot-dispatcher-odoo-adapter</module>
+    </modules>
     <properties>
         <java.version>21</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -56,6 +74,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <copyright>1998 - 2023</copyright>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+        <spring.boot.version>3.2.0</spring.boot.version>
+        <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
 
         <spring-cloud.version>2021.0.2</spring-cloud.version>
         <spring-hateoas.version>2.2.2</spring-hateoas.version> <!-- in line with boot -->
@@ -67,8 +87,7 @@
         <!--apache dependencies-->
         <org.apache.commons.io.version>2.13.0</org.apache.commons.io.version>
         <spring-data-bom.version>2023.1.5</spring-data-bom.version> <!-- in line with boot -->
-        <jakarta.persistence-api.version>3.1.0
-        </jakarta.persistence-api.version> <!-- in line with boot / hibernate-core -->
+        <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version> <!-- in line with boot / hibernate-core -->
         <org.apache.poi.version>5.2.2</org.apache.poi.version>
 
         <!--google dependencies-->
@@ -77,26 +96,6 @@
         <org.mapstruct.version>1.6.0</org.mapstruct.version>
         <org.projectlombok.version>1.18.36</org.projectlombok.version>
     </properties>
-    <modules>
-        <module>spring-boot-dispatcher-app</module>
-        <module>spring-boot-dispatcher-common</module>
-        <module>spring-boot-dispatcher-discovery</module>
-        <module>spring-boot-dispatcher-gateway</module>
-        <module>spring-boot-dispatcher-integration</module>
-        <module>spring-boot-dispatcher-inventory</module>
-        <module>spring-boot-dispatcher-loadbalancer</module>
-        <module>spring-boot-dispatcher-partners</module>
-        <module>spring-boot-dispatcher-picking</module>
-        <module>spring-boot-dispatcher-putaway</module>
-        <module>spring-boot-dispatcher-receiving</module>
-        <module>spring-boot-dispatcher-service</module>
-        <module>spring-boot-dispatcher-shipping</module>
-        <module>spring-boot-dispatcher-transportation</module>
-        <module>spring-boot-dispatcher-uaa</module>
-        <module>spring-boot-dispatcher-adapter</module>
-        <module>spring-boot-dispatcher-packing</module>
-        <module>spring-boot-dispatcher-odoo-adapter</module>
-    </modules>
     <!--
     If you specify a dependency in the dependencyManagement tag, it simply means that you are making this jar available
     for the child pom. It would NOT actually download the jar at this point. The child pom will have to provide the
@@ -231,13 +230,13 @@
                 <artifactId>springdoc-openapi-ui</artifactId>
                 <version>1.7.0</version>
             </dependency>
-
-            <!-- project related -->
+            <!-- Source: https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
             <dependency>
-                <groupId>com.dispatcher.service</groupId>
-                <artifactId>spring-boot-dispatcher-service</artifactId>
-                <version>${project.version}</version>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>2.2.44</version>
             </dependency>
+            <!-- project related -->
             <dependency>
                 <groupId>com.dispatcher.common</groupId>
                 <artifactId>spring-boot-dispatcher-common</artifactId>
@@ -347,35 +346,27 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <!--maven-compiler-plugin-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct-processor</artifactId>
-                            <version>${org.mapstruct.version}</version>
-                        </path>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${org.projectlombok.version}</version>
-                        </path>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok-mapstruct-binding</artifactId>
-                            <version>0.2.0</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+        <pluginManagement>
+            <plugins>
+                <!-- compiler plugin configuration for all modules -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <release>${java.version}</release>
+                    </configuration>
+                </plugin>
 
+                <!-- centralize spring-boot-maven-plugin -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

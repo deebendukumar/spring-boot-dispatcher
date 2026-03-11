@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.dispatcher.service.config;
+package com.dispatcher.common.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -24,8 +24,6 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Collections;
 
 @Configuration
 public class OpenApiConfig {

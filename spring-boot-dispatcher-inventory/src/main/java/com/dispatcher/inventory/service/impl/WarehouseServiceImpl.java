@@ -23,7 +23,7 @@ public class WarehouseServiceImpl implements WarehouseService {
                                   HttpServletResponse response) {
         logger.debug("find called with Accept-Language={}", acceptLanguage);
         // TODO: Query repository / compose response
-        return new WarehouseResponse();
+        return null;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class WarehouseServiceImpl implements WarehouseService {
                                       HttpServletResponse response) {
         logger.debug("findById called with id={}, Accept-Language={}", id, acceptLanguage);
         // TODO: Look up warehouse by id, map to WarehouseResponse
-        return new WarehouseResponse();
+        return null;
     }
 
     @Override
@@ -43,6 +43,6 @@ public class WarehouseServiceImpl implements WarehouseService {
                                                HttpServletResponse response) {
         logger.debug("findZonesByWarehouseId called with id={}, Accept-Language={}", id, acceptLanguage);
         // TODO: Retrieve zones and map to ZoneResponse (or wrapper)
-        return new ZoneResponse();
+        return null;
     }
 }

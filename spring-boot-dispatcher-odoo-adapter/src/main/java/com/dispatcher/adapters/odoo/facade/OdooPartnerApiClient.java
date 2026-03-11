@@ -19,7 +19,6 @@ package com.dispatcher.adapters.odoo.facade;
 import com.dispatcher.adapters.odoo.OdooFilterCollection;
 import com.dispatcher.adapters.odoo.OdooRow;
 import com.dispatcher.adapters.odoo.OdooSession;
-import com.dispatcher.odoo.*;
 import com.dispatcher.adapters.odoo.exception.OdooApiException;
 import org.apache.xmlrpc.XmlRpcException;
 import org.slf4j.Logger;

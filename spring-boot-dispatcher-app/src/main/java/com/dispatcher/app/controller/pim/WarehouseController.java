@@ -16,7 +16,7 @@
 
 package com.dispatcher.app.controller.pim;
 
-import com.dispatcher.service.base.AbstractWebController;
+import com.dispatcher.common.base.AbstractWebController;
 import com.dispatcher.app.service.pim.WarehouseApiService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -49,15 +49,6 @@ public class WarehouseController extends AbstractWebController {
     public List<HashMap<String, Object>> find(@RequestParam("name") Optional<String> code,
                                               HttpServletRequest request,
                                               HttpServletResponse response) {
-//        return service.findAll();
-        return service.test();
+        return null;
     }
-
-//    @GetMapping(path = "/{id}")
-//    @Operation(summary = "Get warehouse by ID")
-//    public HashMap<String, Object> findById(@PathVariable Integer id,
-//                                            HttpServletRequest request,
-//                                            HttpServletResponse response) {
-//        return service.findByPKey(id);
-//    }
 }

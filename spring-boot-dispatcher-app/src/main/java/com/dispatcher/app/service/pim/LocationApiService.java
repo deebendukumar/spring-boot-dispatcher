@@ -16,7 +16,7 @@
 
 package com.dispatcher.app.service.pim;
 
-import com.dispatcher.service.base.AbstractWebService;
+import com.dispatcher.common.base.AbstractWebService;
 import com.dispatcher.adapters.odoo.service.LocationServiceInterface;
 import com.dispatcher.adapters.odoo.service.ServiceAdapter;
 import org.ameba.annotation.TxService;
@@ -54,9 +54,6 @@ public class LocationApiService extends AbstractWebService {
     }
 
     public List<HashMap<String, Object>> test() {
-        ServiceAdapter serviceAdapter = findBeanByName(applicationContext, "zoho");
-        LocationServiceInterface locationServiceInterface = serviceAdapter.getLocationServiceInterface();
-        locationServiceInterface.findAll();
         return new ArrayList<>();
     }
 }

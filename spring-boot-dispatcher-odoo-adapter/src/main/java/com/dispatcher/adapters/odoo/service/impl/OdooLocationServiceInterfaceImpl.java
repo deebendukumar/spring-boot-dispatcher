@@ -1,4 +1,4 @@
-package com.dispatcher.adapters.odoo;
+package com.dispatcher.adapters.odoo.service.impl;
 
 import com.dispatcher.adapters.odoo.service.LocationServiceInterface;
 import org.apache.camel.builder.RouteBuilder;

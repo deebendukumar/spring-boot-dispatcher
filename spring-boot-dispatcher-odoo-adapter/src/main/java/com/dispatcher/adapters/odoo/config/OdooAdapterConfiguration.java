@@ -16,8 +16,8 @@
 
 package com.dispatcher.adapters.odoo.config;
 
-import com.dispatcher.odoo.RPCProtocol;
-import com.dispatcher.odoo.OdooSession;
+import com.dispatcher.adapters.odoo.OdooSession;
+import com.dispatcher.adapters.odoo.RPCProtocol;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

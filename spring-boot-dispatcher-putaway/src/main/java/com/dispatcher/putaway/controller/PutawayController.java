@@ -18,7 +18,7 @@ package com.dispatcher.putaway.controller;
 
 import com.dispatcher.putaway.contract.PutawayRequest;
 import com.dispatcher.putaway.contract.PutawayResponse;
-import com.dispatcher.service.base.AbstractWebController;
+import com.dispatcher.common.base.AbstractWebController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;

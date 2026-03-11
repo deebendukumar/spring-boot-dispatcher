@@ -16,7 +16,7 @@
 
 package com.dispatcher.uaa.controller;
 
-import com.dispatcher.service.base.AbstractWebController;
+import com.dispatcher.common.base.AbstractWebController;
 import com.dispatcher.uaa.contract.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

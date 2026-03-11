@@ -17,7 +17,7 @@
 package com.dispatcher.app.service.pim;
 
 import com.dispatcher.adapters.odoo.OdooSession;
-import com.dispatcher.service.base.AbstractWebService;
+import com.dispatcher.common.base.AbstractWebService;
 import org.ameba.annotation.TxService;
 import org.ameba.i18n.Translator;
 import org.slf4j.Logger;

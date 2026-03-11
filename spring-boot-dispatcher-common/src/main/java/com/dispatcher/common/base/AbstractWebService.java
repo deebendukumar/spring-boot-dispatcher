@@ -13,15 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.dispatcher.common.base;
 
-package com.dispatcher.service.base.repository;
+import org.springframework.context.ApplicationContext;
 
-import com.dispatcher.service.base.entity.SequenceNumber;
-import com.dispatcher.service.base.entity.ServiceConfig;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
+import java.util.Optional;
+import java.util.ServiceLoader;
 
-//@RepositoryRestResource(collectionResourceRel = "partners", path = "partners")
-@Repository
-public interface ServiceConfigRepository extends MongoRepository<ServiceConfig, String> {
+public abstract class AbstractWebService {
+
 }

@@ -3,5 +3,10 @@ package com.dispatcher.adapter.common;
 public interface  WarehouseAdapter {
 
     String getPlatform();
-    void login();
+
+    //warehouse management functions
+    void listWarehouses();
+    void getWarehouseInfo(String warehouseId);
+    void activateWarehouse(String id);
+    void deactivateWarehouse(String id);
 }

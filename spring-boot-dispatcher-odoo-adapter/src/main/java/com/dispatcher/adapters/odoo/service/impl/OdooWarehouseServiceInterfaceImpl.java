@@ -1,5 +1,6 @@
-package com.dispatcher.adapters.odoo;
+package com.dispatcher.adapters.odoo.service.impl;
 
+import com.dispatcher.adapters.odoo.OdooSession;
 import com.dispatcher.common.model.warehouse.Warehouse;
 import com.dispatcher.adapters.odoo.exception.OdooApiException;
 import com.dispatcher.adapters.odoo.facade.OdooApiClient;
